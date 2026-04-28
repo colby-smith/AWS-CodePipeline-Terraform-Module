@@ -1,0 +1,30 @@
+# OS & Editor folders
+Thumbs.db
+.vscode/
+
+#Logs
+*.log
+logs/
+
+# Temporary folders
+*.tmp
+tmp/
+
+# Secrets
+.env
+.env.*
+secrets/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+
+

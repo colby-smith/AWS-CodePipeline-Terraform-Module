@@ -1,0 +1,80 @@
+{
+  "name": "Staging Branch Rules",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "include": ["refs/heads/staging"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "pull_request",
+      "parameters": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_review": false,
+        "require_last_push_approval": false
+      }
+    },
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": true,
+        "required_status_checks": [
+          { "context": "lint" },
+          { "context": "security" },
+          { "context": "dependabot" }
+        ]
+      }
+    },
+    {
+      "type": "non_fast_forward",
+      "parameters": {}
+    },
+    {
+      "type": "deletion",
+      "parameters": {
+        "block_deletions": true
+      }
+    },
+    {
+      "type": "creation",
+      "parameters": {
+        "blocked_patterns": ["release/*"]
+      }
+    },
+    {
+      "type": "update",
+      "parameters": {
+        "update_requires_up_to_date_branch": true
+      }
+    },
+    {
+      "type": "secret_scanning",
+      "parameters": {
+        "block_pushes": true
+      }
+    },
+    {
+      "type": "push_protection",
+      "parameters": {
+        "enabled": true
+      }
+    },
+    {
+      "type": "code_scanning",
+      "parameters": {
+        "enabled": true
+      }
+    },
+    {
+      "type": "dependency_review",
+      "parameters": {
+        "enabled": true
+      }
+    }
+  ],
+  "bypass_actors": []
+}
