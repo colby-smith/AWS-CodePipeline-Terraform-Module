@@ -8,7 +8,7 @@ locals {
     FullRepositoryId = var.source_repository
     BranchName       = var.source_branch
     DetectChanges    = tostring(var.detect_changes)
-  } : var.source_provider == "CodeCommit" ? {
+    } : var.source_provider == "CodeCommit" ? {
     RepositoryName       = var.source_repository
     BranchName           = var.source_branch
     PollForSourceChanges = tostring(var.codecommit_poll_for_source_changes)
